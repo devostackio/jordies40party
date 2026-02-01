@@ -3,7 +3,7 @@ import { useState } from 'react';
 import heroImage from '@/assets/images/myrtle-beach-ferris-wheel.png';
 import signImage from '@/assets/images/myrtle-beach-sign.png';
 import { RsvpModal } from '@/app/components/RsvpModal';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
