@@ -159,7 +159,7 @@ export default function App() {
               This is a <strong>GIRLS TRIP 🙂</strong>
             </p>
             <p className="text-lg text-slate-700 leading-relaxed">
-              If you're planning to travel with a family member or partner outside of the party-attendants, just let me know ahead of time! While I don't wish to exclude your family and partners, I will ask that designated "girls time" just be us and will think about activities that can mixed should we have a ton of other folks joining.
+              If you're planning to travel with a family member or partner outside of the party-attendants, just let me know ahead of time! While I don't wish to exclude your family and partners, I will ask that designated "girls time" just be us. Thanks for understanding.
             </p>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function App() {
               Please do me a huge favor? To facilitate and streamline planning for the event and ensure everyone has a great time, I'm collecting a few details up front - including interest, preference, and even your input on some of the activities we'll do together!
             </p>
             <p className="text-2xl mb-8 text-slate-800">
-              First and foremost, <strong>ARE YOU IN???</strong> (haha)
+              First and foremost, <strong>ARE YOU IN???</strong>
             </p>
             <div className="inline-block">
               <button className="bg-gradient-to-r from-orange-500 via-pink-500 to-teal-500 text-white px-16 py-6 rounded-full text-2xl hover:shadow-2xl transition-all transform hover:scale-105 animate-pulse" onClick={() => setIsModalOpen(true)}>
