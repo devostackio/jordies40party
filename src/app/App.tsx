@@ -3,6 +3,7 @@ import { useState } from 'react';
 import heroImage from '@/assets/images/myrtle-beach-ferris-wheel.png';
 import signImage from '@/assets/images/myrtle-beach-sign.png';
 import { RsvpModal } from '@/app/components/RsvpModal';
+import { Analytics } from "@vercel/analytics/next"
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,6 +11,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
       {/* Hero Section */}
+      <Analytics />
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
