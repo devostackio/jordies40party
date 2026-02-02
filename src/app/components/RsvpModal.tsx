@@ -127,7 +127,7 @@ export function RsvpModal({ isOpen, onClose }: RsvpModalProps) {
         <div className="overflow-y-auto flex-1 bg-gradient-to-r from-orange-50 via-white to-teal-50 flex items-start justify-center py-8">
           <div className="asana-embed-container max-w-3xl w-full">
             <link rel="stylesheet" href="https://form.asana.com/static/asana-form-embed-style.css"/>
-            <iframe className="asana-embed-iframe" height="533" width="800" src="https://form.asana.com/?k=FKeVEt-fpZg3_xs_JIg5hA&d=1211849970832809&embed=true"></iframe>
+            <iframe className="override-asana-embed-iframe" height="800" width="800" src="https://form.asana.com/?k=FKeVEt-fpZg3_xs_JIg5hA&d=1211849970832809&embed=true"></iframe>
             <div className="asana-embed-footer">
               <a rel="nofollow noopener" target="_blank" className="asana-embed-footer-link" href="https://asana.com/?utm_source=embedded_form">
                 <span className="asana-embed-footer-text">Form powered by</span>
