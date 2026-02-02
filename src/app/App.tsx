@@ -90,7 +90,7 @@ export default function App() {
           <div className="space-y-6">
             {/* Thursday/Friday */}
             <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-l-4 border-orange-400">
-              <h3 className="text-2xl mb-2 text-slate-800">Thursday, May 27 (or early Friday)</h3>
+              <h3 className="text-2xl mb-2 text-slate-800">Thursday, May 28 (or early Friday)</h3>
               <p className="text-slate-600 text-lg">Arrive! Informal hangout</p>
             </div>
 
@@ -98,7 +98,7 @@ export default function App() {
             <div className="bg-gradient-to-r from-orange-50 to-pink-50 rounded-2xl p-6 md:p-8 shadow-lg border-l-4 border-pink-500">
               <div className="flex items-start gap-2 mb-2">
                 <Sparkles className="w-6 h-6 text-pink-500 mt-1" />
-                <h3 className="text-2xl text-slate-800">Friday, May 28*</h3>
+                <h3 className="text-2xl text-slate-800">Friday, May 29*</h3>
               </div>
               <p className="text-slate-700 text-lg">
                 <strong>Kickoff:</strong> Brunch, activities/excursions + beach time - casual
@@ -109,7 +109,7 @@ export default function App() {
             <div className="bg-gradient-to-r from-teal-50 to-sky-50 rounded-2xl p-6 md:p-8 shadow-lg border-l-4 border-teal-500">
               <div className="flex items-start gap-2 mb-2">
                 <Sparkles className="w-6 h-6 text-teal-500 mt-1" />
-                <h3 className="text-2xl text-slate-800">Saturday, May 29*</h3>
+                <h3 className="text-2xl text-slate-800">Saturday, May 30*</h3>
               </div>
               <p className="text-slate-700 text-lg">
                 Full day w/group dinner - <strong>semi-formal/dressy!!</strong>
@@ -118,7 +118,7 @@ export default function App() {
 
             {/* Sunday */}
             <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-l-4 border-sky-400">
-              <h3 className="text-2xl mb-2 text-slate-800">Sunday, May 30</h3>
+              <h3 className="text-2xl mb-2 text-slate-800">Sunday, May 31</h3>
               <p className="text-slate-600 text-lg">Depart or hangout</p>
             </div>
           </div>
