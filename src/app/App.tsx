@@ -34,7 +34,7 @@ export default function App() {
             </h2>
             <div className="flex items-center justify-center gap-2 text-xl md:text-2xl text-slate-600 mb-8">
               <Calendar className="w-6 h-6" />
-              <span>May 27-30, 2026</span>
+              <span>May 28-31, 2026</span>
             </div>
             <button className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-12 py-4 rounded-full text-xl hover:shadow-lg transition-all transform hover:scale-105" onClick={() => setIsModalOpen(true)}>
               RSVP Now
@@ -127,7 +127,7 @@ export default function App() {
           <div className="mt-12 bg-gradient-to-br from-orange-100 via-pink-100 to-teal-100 rounded-2xl p-8 shadow-lg">
             <h3 className="text-2xl mb-4 text-slate-800">What's Included</h3>
             <p className="text-slate-700 text-lg mb-4">
-              These core birthday events are complimentary and fully covered. Additional optional activities will be at your own expense.
+              Core birthday events (Brunch, Friday night, and Saturday dinner) are fully hosted/covered. Any additional activities will be at your own expense.
             </p>
             <ul className="space-y-2 text-slate-700 text-lg">
               <li className="flex items-center gap-2">
@@ -192,7 +192,7 @@ export default function App() {
             <Heart className="w-6 h-6 text-pink-400" />
             <p className="text-lg">Myrtle Beach Girls Trip 2026</p>
           </div>
-          <p className="text-slate-300">May 27-30 • See you at the beach!</p>
+          <p className="text-slate-300">May 28-31 • See you at the beach!</p>
         </div>
       </footer>
 

@@ -89,8 +89,8 @@ export function RsvpModal({ isOpen, onClose }: RsvpModalProps) {
         <div className="bg-gradient-to-r from-orange-500 via-pink-500 to-teal-500 p-4 md:p-6 flex-shrink-0">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-2xl md:text-3xl text-white">RSVP for Girls Trip</h2>
-              <p className="text-white/90 mt-1 text-sm md:text-base">Myrtle Beach, SC • May 27-30, 2026</p>
+              <h2 className="text-2xl md:text-3xl text-white">RSVP Form (Asana)</h2>
+              <p className="text-white/90 mt-1 text-sm md:text-base">Myrtle Beach, SC • May 28-31, 2026</p>
             </div>
             <div className="flex items-center gap-2">
               {/* Full Screen Toggle - Hidden on mobile, show on desktop */}
