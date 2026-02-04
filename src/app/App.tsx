@@ -26,7 +26,7 @@ export default function App() {
           <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl">
             <Sparkles className="w-12 h-12 mx-auto mb-4 text-orange-500" />
             <h1 className="text-5xl md:text-7xl mb-4 text-slate-800">
-              Girls Trip
+              Girls Getaway
             </h1>
             <div className="h-1 w-32 bg-gradient-to-r from-orange-400 via-pink-400 to-teal-400 mx-auto mb-6 rounded-full"></div>
             <h2 className="text-3xl md:text-4xl mb-6 text-slate-700">
@@ -156,7 +156,7 @@ export default function App() {
               <h2 className="text-4xl text-slate-800">Travel Partners & Family</h2>
             </div>
             <p className="text-lg text-slate-700 leading-relaxed mb-4">
-              This is a <strong>GIRLS TRIP 🙂</strong>
+              This is a <strong>Girls Getaway 🙂</strong>
             </p>
             <p className="text-lg text-slate-700 leading-relaxed">
               If you're planning to travel with a family member or partner outside of the party-attendants, just let me know ahead of time! While I don't wish to exclude your family and partners, I will ask that designated "girls time" just be us. Thanks for understanding.
@@ -190,7 +190,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Heart className="w-6 h-6 text-pink-400" />
-            <p className="text-lg">Myrtle Beach Girls Trip 2026</p>
+            <p className="text-lg">Myrtle Beach Girls Getaway 2026</p>
           </div>
           <p className="text-slate-300">May 28-31 • See you at the beach!</p>
         </div>
