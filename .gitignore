@@ -25,6 +25,7 @@ pnpm-debug.log*
 # Build / output
 dist/
 build/
+notes/
 .out/
 .next/
 .nuxt/
