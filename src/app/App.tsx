@@ -39,6 +39,7 @@ export default function App() {
             <button className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-12 py-4 rounded-full text-xl hover:shadow-lg transition-all transform hover:scale-105" onClick={() => setIsModalOpen(true)}>
               RSVP Now
             </button>
+            <p className="text-sm text-slate-500 mt-4">See event details below</p>
           </div>
         </div>
       </section>

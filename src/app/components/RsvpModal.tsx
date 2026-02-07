@@ -89,7 +89,7 @@ export function RsvpModal({ isOpen, onClose }: RsvpModalProps) {
         <div className="bg-gradient-to-r from-orange-500 via-pink-500 to-teal-500 p-4 md:p-6 flex-shrink-0">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-2xl md:text-3xl text-white">RSVP Form (Asana)</h2>
+              <h2 className="text-1xl md:text-2xl text-white">RSVP for Myrtle Beach</h2>
               <p className="text-white/90 mt-1 text-sm md:text-base">Myrtle Beach, SC • May 28-31, 2026</p>
             </div>
             <div className="flex items-center gap-2">
@@ -127,7 +127,7 @@ export function RsvpModal({ isOpen, onClose }: RsvpModalProps) {
         <div className="overflow-y-auto flex-1 bg-gradient-to-r from-orange-50 via-white to-teal-50 flex items-start justify-center py-8">
           <div className="asana-embed-container max-w-3xl w-full">
             <link rel="stylesheet" href="https://form.asana.com/static/asana-form-embed-style.css"/>
-            <iframe className="override-asana-embed-iframe" height="800" width="800" src="https://form.asana.com/?k=FKeVEt-fpZg3_xs_JIg5hA&d=1211849970832809&embed=true"></iframe>
+            <iframe className="override-asana-embed-iframe w-full h-full min-h-[800px] border-0" src="https://form.asana.com/?k=FKeVEt-fpZg3_xs_JIg5hA&d=1211849970832809&embed=true"></iframe>
             <div className="asana-embed-footer">
               <a rel="nofollow noopener" target="_blank" className="asana-embed-footer-link" href="https://asana.com/?utm_source=embedded_form">
                 <span className="asana-embed-footer-text">Form powered by</span>
