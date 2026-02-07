@@ -6,7 +6,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<AdminMessage />} />
-      <Route path="/:id" element={<InvitationPage />} />
+      <Route path="/invite/:id" element={<InvitationPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
