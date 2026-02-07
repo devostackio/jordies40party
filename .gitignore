@@ -45,6 +45,7 @@ coverage/
 .pnp.js
 /.parcel-cache
 
+
 # Misc
 *.tgz
 *.zip
