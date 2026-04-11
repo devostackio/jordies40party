@@ -8,7 +8,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<AdminMessage />} />
       <Route path="/invite/:id" element={<InvitationPage />} />
-      <Route path="/party/styleguide" element={<StyleGuidePage />} />
+      <Route path="/styleguide" element={<StyleGuidePage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
