@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics, track } from '@vercel/analytics/react';
 import { PartyTimeHero } from '@/app/components/party-time/PartyTimeHero';
 import { PartyTimeTabs } from '@/app/components/party-time/PartyTimeTabs';
 import { PartyTimeContactFooter } from '@/app/components/party-time/PartyTimeContactFooter';
@@ -32,6 +32,7 @@ export default function PartyTimePage() {
   const handleTabChange = (tab: PartyTimeTabId) => {
     setActiveTab(tab);
     setSearchParams({ tab }, { replace: true });
+    track('party_time_tab', { tab });
     document.getElementById('party-time-guide')?.scrollIntoView({ behavior: 'smooth' });
   };
 
