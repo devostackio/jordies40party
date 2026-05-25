@@ -1,5 +1,6 @@
 import type { ComponentType, ReactNode } from 'react';
 import {
+  BedDouble,
   Calendar,
   ClipboardList,
   Home,
@@ -13,9 +14,11 @@ import { DirectionsSection } from './DirectionsSection';
 import { AgendaSection } from './AgendaSection';
 import { PackSection } from './PackSection';
 import { RemindersSection } from './RemindersSection';
+import { RoomAssignmentsSection } from './RoomAssignmentsSection';
 
 const TAB_ICONS: Record<PartyTimeTabId, ComponentType<{ className?: string }>> = {
   stay: Home,
+  rooms: BedDouble,
   directions: MapPin,
   agenda: Calendar,
   pack: Luggage,
@@ -24,6 +27,7 @@ const TAB_ICONS: Record<PartyTimeTabId, ComponentType<{ className?: string }>> =
 
 const TAB_PANELS: Record<PartyTimeTabId, ReactNode> = {
   stay: <StaySection />,
+  rooms: <RoomAssignmentsSection />,
   directions: <DirectionsSection />,
   agenda: <AgendaSection />,
   pack: <PackSection />,

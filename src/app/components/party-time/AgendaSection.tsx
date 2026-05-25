@@ -19,12 +19,12 @@ export function AgendaSection() {
             <span className="absolute -left-[2.15rem] top-1 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-orange-100" />
             <div className="flex flex-wrap items-baseline gap-2 mb-1">
               <Clock className="w-4 h-4 text-orange-500" />
-              <span className="font-semibold text-slate-800">2:00 PM</span>
+              <span className="font-semibold text-slate-800">4:00 PM</span>
               <span className="text-slate-600">Check-In Opens</span>
             </div>
             <p className="text-slate-700 leading-relaxed">
-              Head to the villa, drop your bags, and claim your room (assignments already sent!).
-              Take a minute to explore the house and the porch.
+              Early check-in might be possible. We may explore the Resort ahead of our rental being ready. 
+              If you're arriving early, text Jordie — who will provide instructions. See room assignments in the <strong>Rooms</strong> tab.
             </p>
           </div>
         </div>

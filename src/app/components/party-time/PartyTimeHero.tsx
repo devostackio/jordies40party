@@ -1,5 +1,6 @@
-import { Sparkles, Sun } from 'lucide-react';
+import { ExternalLink, Sparkles, Sun } from 'lucide-react';
 import heroImage from '@/assets/images/myrtle-beach-ferris-wheel.png';
+import { PARTY_CREW_SLIDESHOW_URL } from './constants';
 
 export function PartyTimeHero() {
   return (
@@ -26,11 +27,20 @@ export function PartyTimeHero() {
             Party Time
           </h1>
           <div className="h-1 w-24 bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400 mx-auto mb-6 rounded-full" />
-          <p className="text-lg text-slate-700 leading-relaxed mb-4">
+          <p className="text-lg text-slate-700 leading-relaxed mb-6">
             The countdown is over, the bags are packed, and Myrtle Beach is calling our names.
             This is going to be one for the books — sun, sand, cocktails, and nothing but good
             energy with my favorite women.
           </p>
+          <a
+            href={PARTY_CREW_SLIDESHOW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-teal-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all mb-6"
+          >
+            View Party Crew Slideshow
+            <ExternalLink className="w-4 h-4" />
+          </a>
           <p className="text-slate-600 leading-relaxed">
             Below is everything you need for arrival day — directions, packing, what to expect,
             and how to reach me. Read through, screenshot what you need, and get ready to glow.

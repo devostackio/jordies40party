@@ -31,7 +31,8 @@ export function StaySection() {
           </li>
         </ul>
         <p className="mt-4 text-slate-600 text-sm">
-          Room assignments have already been shared out. If you missed yours, text Jordie.
+          Room assignments are in the <strong className="text-slate-700">Rooms</strong> tab. If
+          anything looks off, text Jordie.
         </p>
       </div>
 
