@@ -198,9 +198,9 @@ export const PARTY_TIME_SEARCH_INDEX: PartyTimeSearchEntry[] = [
   {
     id: 'agenda-checkin',
     tabId: 'agenda',
-    title: 'Thursday May 28 — check-in opens',
+    title: 'Thursday May 28 — arrival day',
     snippet:
-      'Day One: Arrival & Welcome. Check-in opens at 4:00 PM; early check-in may be possible — text Jordie if you arrive early. See room assignments in Rooms.',
+      'Check-in at 4:00 PM (early possible — resort day until ready). 5–7 PM snacks and hors d\'oeuvres. Optional dinner or order in. Evening: boardwalk or resort.',
     keywords: [
       'agenda',
       'schedule',
@@ -213,6 +213,13 @@ export const PARTY_TIME_SEARCH_INDEX: PartyTimeSearchEntry[] = [
       '4:00',
       'early',
       'welcome',
+      'snacks',
+      'hors',
+      "hors d'oeuvres",
+      'appetizers',
+      'boardwalk',
+      'resort',
+      'dinner',
     ],
   },
   ...packItemEntries(),

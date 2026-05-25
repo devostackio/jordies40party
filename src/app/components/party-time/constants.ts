@@ -98,3 +98,132 @@ export const PACKING_BRING_FOR_YOU = [
   'Your own snacks',
   'Alternative dinners for your dietary needs',
 ] as const;
+
+export type AgendaItem = {
+  time?: string;
+  label: string;
+  description: string;
+  optional?: boolean;
+};
+
+export type AgendaDay = {
+  date: string;
+  title: string;
+  items: readonly AgendaItem[];
+  footnote?: string;
+};
+
+export const AGENDA_DAYS: readonly AgendaDay[] = [
+  {
+    date: 'Thursday, May 28th',
+    title: 'Day One — Arrival & Welcome',
+    items: [
+      {
+        time: '4:00 PM',
+        label: 'Check-In Opens',
+        description:
+          "Guaranteed check-in at 4:00 PM — early check-in may be possible if the villa is ready. Until then, enjoy the resort (beach, pool, explore). Arriving early? Text Jordie for instructions. See room assignments in the Rooms tab.",
+      },
+      {
+        time: '5:00 – 7:00 PM',
+        label: "Snacks & Hors d'oeuvres",
+        description: 'Light bites and welcome snacks at the house as everyone settles in.',
+      },
+      {
+        label: 'Dinner',
+        description: 'Optional — join a group meal or order in on your own.',
+        optional: true,
+      },
+      {
+        time: 'Evening',
+        label: 'Boardwalk or Resort',
+        description:
+          'Head to the boardwalk (~20 minutes away) or keep it low-key at the resort — your call.',
+      },
+    ],
+  },
+  {
+    date: 'Friday, May 29th',
+    title: 'Day Two — Beach, Pool & Boardwalk',
+    items: [
+      {
+        time: 'Before 10:00 AM',
+        label: 'Breakfast @ the House',
+        description: 'Casual breakfast at the villa — come and go as you wake up.',
+      },
+      {
+        label: 'Beach & Pool @ the Resort',
+        description: 'Hang at the beach and pool — the main plan for the day.',
+      },
+      {
+        label: 'Optional Outings',
+        description: 'Outlets shopping, mini-golf, or explore on your own.',
+        optional: true,
+      },
+      {
+        time: 'Evening',
+        label: 'Dinner Together @ the House',
+        description: 'Italian / pizza night at the villa.',
+      },
+      {
+        time: 'Late Night — Plan 1',
+        label: 'Boardwalk or Broadway at the Beach',
+        description: 'Head out for the evening — about 20 minutes away.',
+      },
+      {
+        time: 'Late Night — Plan 2 (if it rains)',
+        label: 'Game Night & Movies',
+        description: 'Stay in for games and movies at the house.',
+      },
+    ],
+  },
+  {
+    date: 'Saturday, May 30th',
+    title: 'Day Three — Murrells Inlet & Birthday Dinner',
+    items: [
+      {
+        time: 'Before 10:00 AM',
+        label: 'Breakfast @ the House',
+        description: 'Same relaxed breakfast plan as Friday.',
+      },
+      {
+        time: '10:30 AM – 3:30 PM',
+        label: 'Murrells Inlet & Brookgreen Gardens',
+        description:
+          'Group outing to the inlet and gardens. Lunch at Murrells Inlet while we are out.',
+      },
+      {
+        time: '6:00 PM',
+        label: 'Dinner @ Cypress Room',
+        description: 'Birthday dinner at the Cypress Room, Island Vista Resort.',
+      },
+      {
+        label: 'After Party (optional)',
+        description: 'House of Blues or Keys 88 Bar — join if you are up for it.',
+        optional: true,
+      },
+    ],
+  },
+  {
+    date: 'Sunday, May 31st',
+    title: 'Day Four — Sunrise & Farewell',
+    items: [
+      {
+        time: '6:00 AM',
+        label: 'Sunrise Beach Walk',
+        description: 'Optional early stroll — meet on the beach if you are an early riser.',
+      },
+      {
+        time: '8:30 AM',
+        label: 'Breakfast / Brunch @ the House',
+        description: 'Last shared meal at the villa.',
+      },
+      {
+        time: '10:45 AM',
+        label: 'Pack & Head Out',
+        description:
+          'Target checkout time is 10:45 AM. You can keep enjoying the beach and leave whenever works for you.',
+      },
+    ],
+  },
+];
