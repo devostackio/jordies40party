@@ -46,7 +46,7 @@ export function StaySection() {
           href={RENTAL_POLICIES_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-teal-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all"
+          className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-full font-medium hover:bg-orange-600 hover:shadow-lg transition-all"
         >
           Read Rental Policies
           <ExternalLink className="w-4 h-4" />

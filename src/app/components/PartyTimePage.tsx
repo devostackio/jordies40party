@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Analytics, track } from '@vercel/analytics/react';
 import { PartyTimeHero } from '@/app/components/party-time/PartyTimeHero';
-import { PartyTimeSearch } from '@/app/components/party-time/PartyTimeSearchBar';
 import { PartyTimeTabs } from '@/app/components/party-time/PartyTimeTabs';
 import { PartyTimeContactFooter } from '@/app/components/party-time/PartyTimeContactFooter';
 import {
@@ -41,8 +40,6 @@ export default function PartyTimePage() {
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
       <Analytics />
       <PartyTimeHero />
-
-      <PartyTimeSearch onGoToTab={handleTabChange} />
 
       <div id="party-time-guide" className="scroll-mt-4">
         <PartyTimeTabs activeTab={activeTab} onTabChange={handleTabChange} />

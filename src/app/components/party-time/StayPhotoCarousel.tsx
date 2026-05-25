@@ -123,7 +123,7 @@ export function StayPhotoCarousel() {
             className={cn(
               'h-2.5 rounded-full transition-all touch-manipulation',
               current === index
-                ? 'w-8 bg-gradient-to-r from-orange-500 to-teal-500'
+                ? 'w-8 bg-orange-500'
                 : 'w-2.5 bg-slate-300 hover:bg-slate-400',
             )}
           />

@@ -1,5 +1,5 @@
-import { BedDouble, Users } from 'lucide-react';
-import { NON_BOARDING_CREW, ROOM_ASSIGNMENTS } from './constants';
+import { BedDouble, ExternalLink, Users } from 'lucide-react';
+import { NON_BOARDING_CREW, PARTY_CREW_SLIDESHOW_URL, ROOM_ASSIGNMENTS } from './constants';
 
 export function RoomAssignmentsSection() {
   return (
@@ -35,6 +35,21 @@ export function RoomAssignmentsSection() {
           </li>
         ))}
       </ul>
+
+      <div className="text-center pt-2">
+        <p className="text-slate-600 mb-4">
+          Want the full crew lineup? Check out who&apos;s coming to the party.
+        </p>
+        <a
+          href={PARTY_CREW_SLIDESHOW_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-full font-medium hover:bg-orange-600 hover:shadow-lg transition-all"
+        >
+          View Party Crew Slideshow
+          <ExternalLink className="w-4 h-4" />
+        </a>
+      </div>
 
       <div className="bg-gradient-to-br from-slate-50 to-violet-50 rounded-2xl p-6 md:p-8 shadow-lg border border-violet-100">
         <div className="flex items-center gap-2 mb-3">

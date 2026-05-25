@@ -1,6 +1,5 @@
-import { ExternalLink, Sparkles, Sun } from 'lucide-react';
+import { ChevronDown, Sparkles, Sun } from 'lucide-react';
 import heroImage from '@/assets/images/myrtle-beach-ferris-wheel.png';
-import { PARTY_CREW_SLIDESHOW_URL } from './constants';
 
 export function PartyTimeHero() {
   return (
@@ -32,15 +31,16 @@ export function PartyTimeHero() {
             This is going to be one for the books — sun, sand, cocktails, and nothing but good
             energy with my favorite women.
           </p>
-          <a
-            href={PARTY_CREW_SLIDESHOW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-teal-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all mb-6"
+          <button
+            type="button"
+            onClick={() =>
+              document.getElementById('party-time-guide')?.scrollIntoView({ behavior: 'smooth' })
+            }
+            className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-full font-medium hover:bg-orange-600 hover:shadow-lg transition-all mb-6"
           >
-            View Party Crew Slideshow
-            <ExternalLink className="w-4 h-4" />
-          </a>
+            See the Weekend Guide
+            <ChevronDown className="w-4 h-4" />
+          </button>
           <p className="text-slate-600 leading-relaxed">
             Below is everything you need for arrival day — directions, packing, what to expect,
             and how to reach me. Read through, screenshot what you need, and get ready to glow.
