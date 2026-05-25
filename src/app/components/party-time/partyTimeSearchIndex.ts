@@ -1,5 +1,6 @@
-import type { PartyTimeTabId } from './constants';
+import type { AgendaDay, PartyTimeTabId } from './constants';
 import {
+  AGENDA_DAYS,
   NON_BOARDING_CREW,
   PACKING_BRING_FOR_YOU,
   PACKING_CATEGORIES,
@@ -71,6 +72,94 @@ function providedEntries(): PartyTimeSearchEntry[] {
       ],
     })),
   );
+}
+
+function agendaDayTokens(day: AgendaDay): string[] {
+  const weekday = day.date.split(',')[0].trim().toLowerCase();
+  const mayMatch = day.date.match(/may\s+\d+/i)?.[0];
+  const tokens = [weekday, day.date.toLowerCase(), day.title.toLowerCase()];
+  if (mayMatch) {
+    tokens.push(mayMatch.toLowerCase());
+    tokens.push(mayMatch.replace(/\s+/g, '').toLowerCase());
+  }
+  return tokens;
+}
+
+function agendaEntries(): PartyTimeSearchEntry[] {
+  const allDayTokens = AGENDA_DAYS.flatMap(agendaDayTokens);
+
+  const overview: PartyTimeSearchEntry = {
+    id: 'agenda-overview',
+    tabId: 'agenda',
+    title: 'Weekend agenda — Thursday through Sunday',
+    snippet: AGENDA_DAYS.map(
+      (day) =>
+        `${day.date}: ${day.items.map((item) => item.label).join(', ')}`,
+    ).join(' · '),
+    keywords: [
+      'agenda',
+      'schedule',
+      'itinerary',
+      'plan',
+      'timeline',
+      'what time',
+      'when',
+      'activities',
+      'weekend',
+      ...allDayTokens,
+    ],
+  };
+
+  const dayEntries = AGENDA_DAYS.map((day, dayIndex) => {
+    const dayTokens = agendaDayTokens(day);
+    const schedule = day.items
+      .map((item) => {
+        const time = item.time ? `${item.time} — ` : '';
+        const optional = item.optional ? ' (optional)' : '';
+        return `${time}${item.label}${optional}`;
+      })
+      .join('; ');
+
+    return {
+      id: `agenda-day-${dayIndex}`,
+      tabId: 'agenda' as const,
+      title: `${day.date} — ${day.title}`,
+      snippet: schedule,
+      keywords: [
+        'agenda',
+        'schedule',
+        day.title,
+        ...dayTokens,
+        ...day.items.flatMap((item) => [item.label, item.time ?? '', item.description]),
+      ],
+    };
+  });
+
+  const itemEntries = AGENDA_DAYS.flatMap((day, dayIndex) =>
+    day.items.map((item, itemIndex) => {
+      const dayTokens = agendaDayTokens(day);
+      const timePrefix = item.time ? `${item.time} — ` : '';
+      const weekday = day.date.split(',')[0].trim();
+
+      return {
+        id: `agenda-${dayIndex}-${itemIndex}`,
+        tabId: 'agenda' as const,
+        title: `${timePrefix}${item.label} (${weekday})`,
+        snippet: `${day.date} · ${day.title}. ${item.description}`,
+        keywords: [
+          'agenda',
+          'schedule',
+          item.label,
+          ...(item.time ? [item.time] : []),
+          item.description,
+          ...dayTokens,
+          ...(item.optional ? ['optional'] : []),
+        ],
+      };
+    }),
+  );
+
+  return [overview, ...dayEntries, ...itemEntries];
 }
 
 export const PARTY_TIME_SEARCH_INDEX: PartyTimeSearchEntry[] = [
@@ -195,33 +284,7 @@ export const PARTY_TIME_SEARCH_INDEX: PartyTimeSearchEntry[] = [
       'shuttle',
     ],
   },
-  {
-    id: 'agenda-checkin',
-    tabId: 'agenda',
-    title: 'Thursday May 28 — arrival day',
-    snippet:
-      'Check-in at 4:00 PM (early possible — resort day until ready). 5–7 PM snacks and hors d\'oeuvres. Optional dinner or order in. Evening: boardwalk or resort.',
-    keywords: [
-      'agenda',
-      'schedule',
-      'thursday',
-      'may 28',
-      'arrival',
-      'check-in',
-      'check in',
-      '4pm',
-      '4:00',
-      'early',
-      'welcome',
-      'snacks',
-      'hors',
-      "hors d'oeuvres",
-      'appetizers',
-      'boardwalk',
-      'resort',
-      'dinner',
-    ],
-  },
+  ...agendaEntries(),
   ...packItemEntries(),
   ...providedEntries(),
   ...PACKING_BRING_FOR_YOU.map((item, index) => ({

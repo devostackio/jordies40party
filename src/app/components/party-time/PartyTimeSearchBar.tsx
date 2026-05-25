@@ -1,8 +1,12 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { track } from '@vercel/analytics/react';
 import { ArrowRight, Search, X } from 'lucide-react';
 import { Input } from '@/app/components/ui/input';
 import type { PartyTimeTabId } from './constants';
 import { searchPartyTime, tabLabelFor } from './searchPartyTime';
+
+const SEARCH_TRACK_DEBOUNCE_MS = 700;
+const MIN_TRACK_QUERY_LENGTH = 2;
 
 type PartyTimeSearchPanelProps = {
   onGoToTab: (tab: PartyTimeTabId) => void;
@@ -41,6 +45,7 @@ export function PartyTimeSearchPanel({
   autoFocus = false,
 }: PartyTimeSearchPanelProps) {
   const [query, setQuery] = useState('');
+  const lastTrackedQuery = useRef<string | null>(null);
 
   const hits = useMemo(() => searchPartyTime(query), [query]);
   const hasQuery = query.trim().length >= 2;
@@ -50,6 +55,28 @@ export function PartyTimeSearchPanel({
       document.getElementById('party-time-search')?.focus();
     }
   }, [autoFocus]);
+
+  useEffect(() => {
+    const trimmed = query.trim();
+
+    if (trimmed.length < MIN_TRACK_QUERY_LENGTH) {
+      lastTrackedQuery.current = null;
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      if (lastTrackedQuery.current === trimmed) return;
+
+      lastTrackedQuery.current = trimmed;
+      const results = searchPartyTime(trimmed);
+      track('party_time_search', {
+        query: trimmed,
+        result_count: results.length,
+      });
+    }, SEARCH_TRACK_DEBOUNCE_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [query]);
 
   const handleResultClick = (tab: PartyTimeTabId) => {
     onGoToTab(tab);
@@ -68,7 +95,7 @@ export function PartyTimeSearchPanel({
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search — parking, sunscreen, room, check-in…"
+          placeholder="Search — Friday dinner, Brookgreen, room, check-in…"
           className="h-10 pl-10 pr-10 text-sm rounded-xl border-slate-200 bg-white shadow-sm"
           autoComplete="off"
           spellCheck={false}
@@ -94,8 +121,8 @@ export function PartyTimeSearchPanel({
         >
           {hits.length === 0 ? (
             <p className="text-slate-600 text-center py-4 text-sm">
-              No matches for &ldquo;{query.trim()}&rdquo;. Try parking, dress code, Jordie,
-              sunscreen, or room names.
+              No matches for &ldquo;{query.trim()}&rdquo;. Try parking, Saturday dinner, boardwalk,
+              Brookgreen, or room names.
             </p>
           ) : (
             <>
