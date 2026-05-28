@@ -1,4 +1,4 @@
-import { useState, type ComponentType, type ReactNode } from 'react';
+import React, { useState, type ComponentType, type ReactNode } from 'react';
 import {
   BedDouble,
   Calendar,
@@ -78,10 +78,11 @@ export function PartyTimeTabs({ activeTab, onTabChange }: PartyTimeTabsProps) {
                       <TabsTrigger
                         key={tab.id}
                         value={tab.id}
-                        className="flex-1 min-w-0 justify-center px-2 sm:px-3 py-2.5 rounded-xl data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md text-slate-600"
+                        aria-label={tab.label}
+                        className="flex-1 min-w-0 justify-center gap-0 sm:gap-2 px-2 sm:px-3 py-2.5 rounded-xl data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md text-slate-600"
                       >
                         <Icon className="w-4 h-4" />
-                        {tab.label}
+                        <span className="hidden sm:inline">{tab.label}</span>
                       </TabsTrigger>
                     );
                   })}
@@ -96,14 +97,15 @@ export function PartyTimeTabs({ activeTab, onTabChange }: PartyTimeTabsProps) {
                   onClick={() => setSearchOpen((open) => !open)}
                   aria-expanded={searchOpen}
                   aria-controls="party-time-search"
-                  className={`flex-none inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
+                  aria-label="Search"
+                  className={`flex-none inline-flex items-center gap-0 sm:gap-1.5 px-3 sm:px-4 py-2.5 rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
                     searchOpen
                       ? 'bg-slate-400 text-white shadow-sm hover:bg-slate-500'
                       : 'text-slate-500 hover:bg-slate-100/90'
                   }`}
                 >
                   <Search className="w-4 h-4" />
-                  Search
+                  <span className="hidden sm:inline">Search</span>
                 </button>
               </div>
             </div>
