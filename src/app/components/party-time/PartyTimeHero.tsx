@@ -1,7 +1,14 @@
+import React from 'react';
 import { ChevronDown, Sparkles, Sun } from 'lucide-react';
 import heroImage from '@/assets/images/myrtle-beach-ferris-wheel.png';
 
-export function PartyTimeHero() {
+type PartyTimeHeroProps = {
+  variant?: 'a' | 'b';
+};
+
+export function PartyTimeHero({ variant = 'a' }: PartyTimeHeroProps) {
+  const isVariantB = variant === 'b';
+
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
@@ -23,13 +30,13 @@ export function PartyTimeHero() {
             Golden Hour Girls — It&apos;s Almost Time!
           </p>
           <h1 className="text-4xl md:text-5xl mb-4 text-slate-800">
-            Party Time
+            {isVariantB ? 'Resort Mode' : 'Party Time'}
           </h1>
           <div className="h-1 w-24 bg-gradient-to-r from-orange-400 via-amber-300 to-teal-400 mx-auto mb-6 rounded-full" />
           <p className="text-lg text-slate-700 leading-relaxed mb-6">
-            The countdown is over, the bags are packed, and Myrtle Beach is calling our names.
-            This is going to be one for the books — sun, sand, cocktails, and nothing but good
-            energy with my favorite women.
+            {isVariantB
+              ? 'This weekend is about sunshine, resort amenities, and pure relaxation. Claim your pool chair, hit the beach, and soak up every golden-hour minute with zero pressure.'
+              : 'The countdown is over, the bags are packed, and Myrtle Beach is calling our names. This is going to be one for the books — sun, sand, cocktails, and nothing but good energy with my favorite women.'}
           </p>
           <button
             type="button"
@@ -42,8 +49,9 @@ export function PartyTimeHero() {
             <ChevronDown className="w-4 h-4" />
           </button>
           <p className="text-slate-600 leading-relaxed">
-            Below is everything you need for arrival day — directions, packing, what to expect,
-            and how to reach me. Read through, screenshot what you need, and get ready to glow.
+            {isVariantB
+              ? 'Tap into the plan when you want it, but make this your easy weekend: pool, beach, sunshine, and whatever feels good in the moment.'
+              : 'Below is everything you need for arrival day — directions, packing, what to expect, and how to reach me. Read through, screenshot what you need, and get ready to glow.'}
           </p>
           <p className="mt-6 text-slate-700 italic">
             — With love and sunscreen, Jordie ☀️

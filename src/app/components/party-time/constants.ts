@@ -12,13 +12,26 @@ export const ROOM_ASSIGNMENTS = [
   { room: 'Room 2', bed: 'King Bed', guests: ['Kellay'] },
   { room: 'Room 3', bed: '2 Queen Beds', guests: ['Cynthia', 'PreShus'] },
   { room: 'Room 4', bed: 'Full Bed', guests: ['Adwoa'] },
-  { room: 'Sofa Bed', bed: null, guests: ['Kellicia'] },
-  { room: 'Sofa Bed', bed: null, guests: ['*']},
+  { room: 'LR', bed: 'Sofa Bed', guests: ['Kellicia'] },
+  { room: 'LR', bed: 'Sofa Bed', guests: ['OPEN']},
 ] as const;
 
 export const NON_BOARDING_CREW = ['Alisa', 'Tatiana'] as const;
 
-export type PartyTimeTabId = (typeof PARTY_TIME_TABS)[number]['id'];
+export const PARTY_CREW_MEMBERS = [
+  { name: 'Jordie Yap', city: 'Washington, DC' },
+  { name: 'Kellay Chapman', city: 'Marietta, GA' },
+  { name: 'Cynthia Viola', city: 'Raleigh, NC' },
+  { name: 'PreShus Lee', city: 'Durham, NC' },
+  { name: 'Adwoa Asante-Sutton', city: 'Raleigh, NC' },
+  { name: 'Kellicia Yap', city: 'Hollis, NY' },
+  { name: 'Alisa Haughton', city: 'Washington, DC' },
+  { name: 'Tatiana Johnson', city: 'Durham, NC' }
+] as const;
+
+export type PartyTimeTabId =
+  | (typeof PARTY_TIME_TABS)[number]['id']
+  | 'partycrew';
 
 export const RENTAL_ADDRESS = '4951 Salt Creek Ct, North Myrtle Beach, SC 29582';
 export const RENTAL_POLICIES_URL = 'https://northbeachrentals.com/POLICIES';

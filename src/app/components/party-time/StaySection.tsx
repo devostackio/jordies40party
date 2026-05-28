@@ -2,7 +2,13 @@ import { ExternalLink, Home, MapPin } from 'lucide-react';
 import { RENTAL_ADDRESS, RENTAL_POLICIES_URL } from './constants';
 import { StayPhotoCarousel } from './StayPhotoCarousel';
 
-export function StaySection() {
+type PartyTimeStaySectionProps = {
+  variant?: 'a' | 'b';
+};
+
+export function StaySection({ variant = 'a' }: PartyTimeStaySectionProps) {
+  const isVariantB = variant === 'b';
+
   return (
     <div className="space-y-8">
       <div className="flex items-center gap-3">
@@ -30,10 +36,12 @@ export function StaySection() {
             Full resort access — pools, restaurants, and beachfront
           </li>
         </ul>
-        <p className="mt-4 text-slate-600 text-sm">
-          Room assignments are in the <strong className="text-slate-700">Rooms</strong> tab. If
-          anything looks off, text Jordie.
-        </p>
+        {isVariantB && (
+          <p className="mt-4 text-slate-600 text-sm">
+            Room assignments are in the <strong className="text-slate-700">Rooms</strong> tab. If
+            anything looks off, text Jordie.
+          </p>
+        )}
       </div>
 
       <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-teal-50 rounded-2xl p-6 md:p-8 shadow-lg">

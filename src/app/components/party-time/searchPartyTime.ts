@@ -10,7 +10,7 @@ export type PartyTimeSearchHit = {
 
 const TAB_LABELS = Object.fromEntries(
   PARTY_TIME_TABS.map((t) => [t.id, t.label]),
-) as Record<PartyTimeTabId, string>;
+) as Partial<Record<PartyTimeTabId, string>>;
 
 const STOP_WORDS = new Set([
   'a',
@@ -150,5 +150,5 @@ export function searchPartyTime(query: string): PartyTimeSearchHit[] {
 }
 
 export function tabLabelFor(tabId: PartyTimeTabId): string {
-  return TAB_LABELS[tabId];
+  return TAB_LABELS[tabId] ?? 'Party Crew';
 }

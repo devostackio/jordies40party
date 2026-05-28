@@ -7,6 +7,7 @@ import {
   Luggage,
   MapPin,
   Search,
+  Users,
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/components/ui/tabs';
 import { PARTY_TIME_TABS, type PartyTimeTabId } from './constants';
@@ -17,6 +18,13 @@ import { PackSection } from './PackSection';
 import { RemindersSection } from './RemindersSection';
 import { RoomAssignmentsSection } from './RoomAssignmentsSection';
 import { PartyTimeSearchPanel } from './PartyTimeSearchBar';
+import { PartyCrewSection } from './PartyCrewSection';
+
+const DESIGN_B_TABS: Array<{ id: PartyTimeTabId; label: string }> = [
+  { id: 'agenda', label: 'Agenda' },
+  { id: 'partycrew', label: 'Party Crew' },
+  { id: 'stay', label: 'The Villa' },
+];
 
 const TAB_ICONS: Record<PartyTimeTabId, ComponentType<{ className?: string }>> = {
   stay: Home,
@@ -25,6 +33,7 @@ const TAB_ICONS: Record<PartyTimeTabId, ComponentType<{ className?: string }>> =
   agenda: Calendar,
   pack: Luggage,
   reminders: ClipboardList,
+  partycrew: Users,
 };
 
 const TAB_PANELS: Record<PartyTimeTabId, ReactNode> = {
@@ -34,18 +43,22 @@ const TAB_PANELS: Record<PartyTimeTabId, ReactNode> = {
   agenda: <AgendaSection />,
   pack: <PackSection />,
   reminders: <RemindersSection />,
+  partycrew: <PartyCrewSection />,
 };
 
 type PartyTimeTabsProps = {
   activeTab: PartyTimeTabId;
   onTabChange: (tab: PartyTimeTabId) => void;
+  variant?: 'a' | 'b';
 };
 
-export function PartyTimeTabs({ activeTab, onTabChange }: PartyTimeTabsProps) {
+export function PartyTimeTabs({ activeTab, onTabChange, variant = 'a' }: PartyTimeTabsProps) {
   const [searchOpen, setSearchOpen] = useState(false);
+  const tabs = variant === 'b' ? DESIGN_B_TABS : PARTY_TIME_TABS;
+  const visibleTabIds = new Set(tabs.map((tab) => tab.id));
 
   const handleSearchTab = (tab: PartyTimeTabId) => {
-    onTabChange(tab);
+    onTabChange(visibleTabIds.has(tab) ? tab : 'agenda');
     setSearchOpen(false);
   };
 
@@ -72,7 +85,7 @@ export function PartyTimeTabs({ activeTab, onTabChange }: PartyTimeTabsProps) {
               )}
               <div className="flex w-full items-center gap-1">
                 <TabsList className="flex h-auto flex-1 min-w-0 gap-1 bg-transparent p-0 shadow-none w-full">
-                  {PARTY_TIME_TABS.map((tab) => {
+                  {tabs.map((tab) => {
                     const Icon = TAB_ICONS[tab.id];
                     return (
                       <TabsTrigger
@@ -111,7 +124,7 @@ export function PartyTimeTabs({ activeTab, onTabChange }: PartyTimeTabsProps) {
             </div>
           </div>
 
-          {PARTY_TIME_TABS.map((tab) => (
+          {tabs.map((tab) => (
             <TabsContent
               key={tab.id}
               value={tab.id}
