@@ -8,9 +8,9 @@ export const PARTY_TIME_TABS = [
 ] as const;
 
 export const ROOM_ASSIGNMENTS = [
-  { room: 'Room 1', bed: 'King Bed', guests: ['Kellay'] },
-  { room: 'Room 2', bed: 'King Bed', guests: ['Jordie', 'Dominique'] },
-  { room: 'Room 3', bed: '2 Queen Beds', guests: ['Cynthia', 'PreShus', 'Andrea'] },
+  { room: 'Room 1', bed: 'King Bed', guests: ['Jordie'] },
+  { room: 'Room 2', bed: 'King Bed', guests: ['Kellay'] },
+  { room: 'Room 3', bed: '2 Queen Beds', guests: ['Cynthia', 'PreShus'] },
   { room: 'Room 4', bed: 'Full Bed', guests: ['Adwoa'] },
   { room: 'Sofa Bed', bed: null, guests: ['Kellicia'] },
   { room: 'Sofa Bed', bed: null, guests: ['*']},
@@ -125,7 +125,7 @@ export const AGENDA_DAYS: readonly AgendaDay[] = [
           "Guaranteed check-in at 4:00 PM — early check-in may be possible if the villa is ready. Until then, enjoy the resort (beach, pool, explore). Arriving early? Text Jordie for instructions. See room assignments in the Rooms tab.",
       },
       {
-        time: '5:00 – 7:00 PM',
+        time: '4:30 – 8:00 PM',
         label: "Snacks & Hors d'oeuvres",
         description: 'Light bites and welcome snacks at the house as everyone settles in.',
       },
