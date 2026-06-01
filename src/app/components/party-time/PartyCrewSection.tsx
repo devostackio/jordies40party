@@ -10,6 +10,14 @@ export function PartyCrewSection() {
         <h2 className="text-3xl text-slate-800">Party Crew</h2>
       </div>
 
+      <div className="rounded-2xl overflow-hidden shadow-lg">
+        <img
+          src="/partyCrewGroupPic.jpeg"
+          alt="The party crew — Jordie's 40th birthday trip"
+          className="w-full object-cover object-top max-h-80"
+        />
+      </div>
+
       <p className="text-slate-700 text-lg leading-relaxed">
         Meet the crew and where everyone is coming from.
       </p>
