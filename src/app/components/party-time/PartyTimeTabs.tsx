@@ -1,6 +1,7 @@
 import React, { useState, type ComponentType, type ReactNode } from 'react';
 import {
   BedDouble,
+  BookOpen,
   Calendar,
   ClipboardList,
   Home,
@@ -19,11 +20,17 @@ import { RemindersSection } from './RemindersSection';
 import { RoomAssignmentsSection } from './RoomAssignmentsSection';
 import { PartyTimeSearchPanel } from './PartyTimeSearchBar';
 import { PartyCrewSection } from './PartyCrewSection';
+import { RecapSection } from './RecapSection';
 
 const DESIGN_B_TABS: Array<{ id: PartyTimeTabId; label: string }> = [
   { id: 'agenda', label: 'Agenda' },
   { id: 'partycrew', label: 'Party Crew' },
   { id: 'stay', label: 'The Villa' },
+];
+
+const DESIGN_C_TABS: Array<{ id: PartyTimeTabId; label: string }> = [
+  { id: 'recap', label: 'Recap' },
+  { id: 'partycrew', label: 'Party Crew' },
 ];
 
 const TAB_ICONS: Record<PartyTimeTabId, ComponentType<{ className?: string }>> = {
@@ -34,6 +41,7 @@ const TAB_ICONS: Record<PartyTimeTabId, ComponentType<{ className?: string }>> =
   pack: Luggage,
   reminders: ClipboardList,
   partycrew: Users,
+  recap: BookOpen,
 };
 
 const TAB_PANELS: Record<PartyTimeTabId, ReactNode> = {
@@ -44,21 +52,30 @@ const TAB_PANELS: Record<PartyTimeTabId, ReactNode> = {
   pack: <PackSection />,
   reminders: <RemindersSection />,
   partycrew: <PartyCrewSection />,
+  recap: <RecapSection />,
 };
 
 type PartyTimeTabsProps = {
   activeTab: PartyTimeTabId;
   onTabChange: (tab: PartyTimeTabId) => void;
-  variant?: 'a' | 'b';
+  variant?: 'a' | 'b' | 'c';
+};
+
+const VARIANT_SUBTITLE: Record<'a' | 'b' | 'c', string> = {
+  a: 'Jump to what you need — everything for arrival day in one place.',
+  b: 'Jump to what you need — everything for the weekend in one place.',
+  c: 'A look back at our unforgettable long weekend together.',
 };
 
 export function PartyTimeTabs({ activeTab, onTabChange, variant = 'a' }: PartyTimeTabsProps) {
   const [searchOpen, setSearchOpen] = useState(false);
-  const tabs = variant === 'b' ? DESIGN_B_TABS : PARTY_TIME_TABS;
+  const tabs =
+    variant === 'c' ? DESIGN_C_TABS : variant === 'b' ? DESIGN_B_TABS : PARTY_TIME_TABS;
   const visibleTabIds = new Set(tabs.map((tab) => tab.id));
 
   const handleSearchTab = (tab: PartyTimeTabId) => {
-    onTabChange(visibleTabIds.has(tab) ? tab : 'agenda');
+    const fallback = variant === 'c' ? 'recap' : 'agenda';
+    onTabChange(visibleTabIds.has(tab) ? tab : fallback);
     setSearchOpen(false);
   };
 
@@ -66,7 +83,7 @@ export function PartyTimeTabs({ activeTab, onTabChange, variant = 'a' }: PartyTi
     <section className="py-12 px-4 bg-gradient-to-b from-white to-sky-50/80">
       <div className="max-w-4xl mx-auto">
         <p className="text-center text-slate-600 mb-8 text-lg">
-          Jump to what you need — everything for arrival day in one place.
+          {VARIANT_SUBTITLE[variant]}
         </p>
 
         <Tabs
@@ -87,12 +104,16 @@ export function PartyTimeTabs({ activeTab, onTabChange, variant = 'a' }: PartyTi
                 <TabsList className="flex h-auto flex-1 min-w-0 gap-1 bg-transparent p-0 shadow-none w-full">
                   {tabs.map((tab) => {
                     const Icon = TAB_ICONS[tab.id];
+                    const activeClass =
+                      variant === 'c'
+                        ? 'data-[state=active]:bg-violet-600 data-[state=active]:text-white data-[state=active]:shadow-md'
+                        : 'data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md';
                     return (
                       <TabsTrigger
                         key={tab.id}
                         value={tab.id}
                         aria-label={tab.label}
-                        className="flex-1 min-w-0 justify-center gap-0 sm:gap-2 px-2 sm:px-3 py-2.5 rounded-xl data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md text-slate-600"
+                        className={`flex-1 min-w-0 justify-center gap-0 sm:gap-2 px-2 sm:px-3 py-2.5 rounded-xl text-slate-600 ${activeClass}`}
                       >
                         <Icon className="w-4 h-4" />
                         <span className="hidden sm:inline">{tab.label}</span>
@@ -100,26 +121,30 @@ export function PartyTimeTabs({ activeTab, onTabChange, variant = 'a' }: PartyTi
                     );
                   })}
                 </TabsList>
-                <div
-                  role="presentation"
-                  className="w-px h-9 bg-slate-300 shrink-0 self-center mx-1"
-                  aria-hidden
-                />
-                <button
-                  type="button"
-                  onClick={() => setSearchOpen((open) => !open)}
-                  aria-expanded={searchOpen}
-                  aria-controls="party-time-search"
-                  aria-label="Search"
-                  className={`flex-none inline-flex items-center gap-0 sm:gap-1.5 px-3 sm:px-4 py-2.5 rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
-                    searchOpen
-                      ? 'bg-slate-400 text-white shadow-sm hover:bg-slate-500'
-                      : 'text-slate-500 hover:bg-slate-100/90'
-                  }`}
-                >
-                  <Search className="w-4 h-4" />
-                  <span className="hidden sm:inline">Search</span>
-                </button>
+                {variant !== 'c' ? (
+                  <>
+                    <div
+                      role="presentation"
+                      className="w-px h-9 bg-slate-300 shrink-0 self-center mx-1"
+                      aria-hidden
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setSearchOpen((open) => !open)}
+                      aria-expanded={searchOpen}
+                      aria-controls="party-time-search"
+                      aria-label="Search"
+                      className={`flex-none inline-flex items-center gap-0 sm:gap-1.5 px-3 sm:px-4 py-2.5 rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/60 ${
+                        searchOpen
+                          ? 'bg-slate-400 text-white shadow-sm hover:bg-slate-500'
+                          : 'text-slate-500 hover:bg-slate-100/90'
+                      }`}
+                    >
+                      <Search className="w-4 h-4" />
+                      <span className="hidden sm:inline">Search</span>
+                    </button>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>

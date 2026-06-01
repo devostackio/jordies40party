@@ -13,6 +13,8 @@ export default function App() {
       <Route path="/party-time" element={<PartyTimePage />} />
       <Route path="/party-time/a" element={<PartyTimePage variant="a" />} />
       <Route path="/party-time/b" element={<PartyTimePage variant="b" />} />
+      <Route path="/party-time/c" element={<PartyTimePage variant="c" />} />
+      <Route path="/thank-you" element={<PartyTimePage variant="c" />} />
       {/* <Route path="/styleguide" element={<StyleGuidePage />} /> */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

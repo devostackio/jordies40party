@@ -20,18 +20,28 @@ export const NON_BOARDING_CREW = ['Alisa', 'Tatiana'] as const;
 
 export const PARTY_CREW_MEMBERS = [
   { name: 'Jordie Yap', city: 'Washington, DC' },
-  { name: 'Kellay Chapman', city: 'Marietta, GA' },
   { name: 'Cynthia Viola', city: 'Raleigh, NC' },
-  { name: 'PreShus Lee', city: 'Durham, NC' },
   { name: 'Adwoa Asante-Sutton', city: 'Raleigh, NC' },
   { name: 'Kellicia Yap', city: 'Hollis, NY' },
   { name: 'Alisa Haughton', city: 'Washington, DC' },
   { name: 'Tatiana Johnson', city: 'Durham, NC' }
 ] as const;
 
+export const PARTY_HYBRID_CREW_MEMBERS = [  
+  { name: 'Kellay Chapman', city: 'Marietta, GA' },
+  { name: 'Dominique Bourgeois', city: 'Hartford, CT' },
+  { name: 'PreShus Lee', city: 'Durham, NC' },
+  { name: 'Andrea Vargas', city: 'Apex, NC' },
+  { name: 'Dani Fernandez Norkus', city: 'Raleigh, NC' },
+  { name: 'Kari Wynnemer', city: 'Victoria, MN' },
+  { name: 'Siri Nestingen', city: 'St. Paul, MN' }, 
+  { name: 'Kate Ehoff', city: 'Ventura, CA' }
+] as const;
+
 export type PartyTimeTabId =
   | (typeof PARTY_TIME_TABS)[number]['id']
-  | 'partycrew';
+  | 'partycrew'
+  | 'recap';
 
 export const RENTAL_ADDRESS = '4951 Salt Creek Ct, North Myrtle Beach, SC 29582';
 export const RENTAL_POLICIES_URL = 'https://northbeachrentals.com/POLICIES';
@@ -125,6 +135,64 @@ export type AgendaDay = {
   items: readonly AgendaItem[];
   footnote?: string;
 };
+
+export type RecapItem = {
+  label: string;
+  emoji: string;
+};
+
+export type RecapDay = {
+  date: string;
+  title: string;
+  vibe: string;
+  items: readonly RecapItem[];
+};
+
+export const RECAP_DAYS: readonly RecapDay[] = [
+  {
+    date: 'Thursday, May 28th',
+    title: 'Day One — Arrive & Meet & Greet',
+    vibe: 'The crew assembled. Bags dropped, drinks poured, and the vibes were immediately immaculate.',
+    items: [
+      { label: 'Arrivals rolling in from DC, NC & NY', emoji: '✈️' },
+      { label: 'Villa check-in & claiming our rooms', emoji: '🏡' },
+      { label: 'Meet & Greet — snacks, cocktails & catching up', emoji: '🥂' },
+    ],
+  },
+  {
+    date: 'Friday, May 29th',
+    title: 'Day Two — Beach, Pool & Steak Night',
+    vibe: 'Sun-kissed, pool-chilled, and well-fed. The perfect beach day we came for.',
+    items: [
+      { label: 'Breakfast at the villa', emoji: '🍳' },
+      { label: 'Pool day at the resort', emoji: '🏊‍♀️' },
+      { label: 'Steak & Seafood Dinner', emoji: '🥩' },
+    ],
+  },
+  {
+    date: 'Saturday, May 30th',
+    title: 'Day Three — Disney Breakfast, Outlets & Birthday Dinner',
+    vibe: 'The main event. We did the most — and every single moment was worth it.',
+    items: [
+      { label: 'Breakfast w/ Disney — Aristocats & Oliver', emoji: '🐱' },
+      { label: 'Nap time (well earned)', emoji: '😴' },
+      { label: 'Outlet Shopping', emoji: '🛍️' },
+      { label: 'Birthday Dinner', emoji: '🎂' },
+      { label: 'After Party at 88 Keys Bar', emoji: '🎹' },
+      { label: 'Movie Night: Speed (1994) w/ Keanu Reeves & Sandra Bullock', emoji: '🎬' },
+    ],
+  },
+  {
+    date: 'Sunday, June 1st',
+    title: 'Day Four — Farewell & Boardwalk',
+    vibe: 'No one wanted to leave — but we soaked up every last minute of it.',
+    items: [
+      { label: 'Last breakfast together at the villa', emoji: '🍞' },
+      { label: 'Early departures & safe travels', emoji: '👋' },
+      { label: 'Boardwalk w/ Kellicia & Alisa', emoji: '🌊' },
+    ],
+  },
+];
 
 export const AGENDA_DAYS: readonly AgendaDay[] = [
   {
